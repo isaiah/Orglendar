@@ -21,7 +21,7 @@ local function parse_agenda(today)
             local _, _, y, m, d  = string.find(line, "(%d%d%d%d)%-(%d%d)%-(%d%d)")
             local task_date = y .. "-"  .. m .. "-" .. d
             
-            if d and task_name and (task_date > today) then
+            if d and task_name and (task_date >= today) then
                local _, task_start = string.find(task_name, "[A-Z]+%s+")
                if task_start then
                   task_name = string.sub(task_name, task_start + 1)
