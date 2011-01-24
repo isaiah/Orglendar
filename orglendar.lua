@@ -102,9 +102,9 @@ local function add_calendar(inc_offset)
       cur_month = (cur_month + 12) .. "p"
       cur_year = cur_year - 1
    end
-   local cal = awful.util.pread("cal -m " .. cur_month)
+   local cal = awful.util.pread("cal -m")
    cal = string.gsub(cal, "^%s*(.-)%s*$", "%1")
-   local _, _, head, cal = string.find(cal,"(.+%d%d%d%d)\n(.+)")
+   local _, _, head, cal = string.find(cal,"(.+%d%d%d%d)(.+)")
 
    local todotext, datearr, leng = create_string(query)
    for ii = 1, table.getn(datearr) do
@@ -133,7 +133,7 @@ local function add_calendar(inc_offset)
 			})
 end
 
-function orglendar.register(widget)
+function orglendar.register(timewidget)
    timewidget:add_signal("mouse::enter", function()
                                             add_calendar(0)
                                          end)
