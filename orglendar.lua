@@ -102,7 +102,7 @@ local function add_calendar(inc_offset)
       cur_month = (cur_month + 12) .. "p"
       cur_year = cur_year - 1
    end
-   local cal = awful.util.pread("cal -m")
+   local cal = awful.util.pread("cal -m " .. cur_month .. " " .. cur_year)
    cal = string.gsub(cal, "^%s*(.-)%s*$", "%1")
    local _, _, head, cal = string.find(cal,"(.+%d%d%d%d)(.+)")
 
